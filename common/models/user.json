@@ -15,6 +15,23 @@
   "relations": {},
   "acls": [],
   "methods": {
-
+    "register": {
+      "accepts": [
+        {
+          "arg": "email",
+          "type": "string"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "registration",
+          "type": "string"
+        }
+      ],
+      "description": "register a new user",
+      "http": {
+        "verb": "post"
+      }
+    }
   }
 }
