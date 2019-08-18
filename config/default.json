@@ -17,6 +17,9 @@
       "token_service": {
         "url": "http://localhost:9999"
       },
+      "qrcode_service": {
+        "url": "http://localhost:9998"
+      },
       "proxy_load_balancer": {
         "baseUrl": "localhost:1235/api",
         "url": "http://localhost:1235/api/proxy/next"

@@ -32,6 +32,13 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "find"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "qrcode"
     }
   ],
   "methods": {
@@ -53,6 +60,19 @@
         }
       ],
       "description": "register a new user",
+      "http": {
+        "verb": "post"
+      }
+    },
+    "prototype.qrcode": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "pathToQRCode",
+          "type": "string"
+        }
+      ],
+      "description": "",
       "http": {
         "verb": "post"
       }

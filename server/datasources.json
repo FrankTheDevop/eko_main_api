@@ -25,6 +25,44 @@
       }
     ]
   },
+  "qrcode_service": {
+    "name": "qrcode_service",
+    "baseURL": "",
+    "crud": false,
+    "connector": "rest",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:9998/api/Systems/generateQrCode",
+          "query": {
+            "email": "{!email}",
+            "token": "{!token}"
+          }
+        },
+        "functions": {
+          "generateQrCode": [
+            "email",
+            "token"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:9998/api/Systems/getPublicQRCodePath",
+          "query": {
+            "email": "{!email}"
+          }
+        },
+        "functions": {
+          "getPublicQRCodePath": [
+            "email"
+          ]
+        }
+      }
+    ]
+  },
   "db": {
     "name": "db",
     "connector": "memory"

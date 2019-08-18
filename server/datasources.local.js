@@ -42,4 +42,42 @@ if (config.has('api.dataSources') && config.has('api.dataSources.proxy_load_bala
   }
 }
 
+datasources.qrcode_service = {
+  'name': 'qrcode_service',
+  'baseURL': '',
+  'crud': false,
+  'connector': 'rest',
+  "operations": [
+    {
+      "template": {
+        "method": "GET",
+        "url": `${config.get('api.dataSources.qrcode_service.url')}/api/Systems/generateQrCode`,
+        "query": {
+          "email": "{!email}",
+          "token": "{!token}"
+        }
+      },
+      "functions": {
+        "generateQrCode": [
+          "email",
+          "token"
+        ]
+      }
+    },
+    {
+      "template": {
+        "method": "GET",
+        "url": `${config.get('api.dataSources.qrcode_service.url')}/api/Systems/getPublicQRCodePath`,
+        "query": {
+          "email": "{!email}"
+        }
+      },
+      "functions": {
+        "getPublicQRCodePath": [
+          "email"
+        ]
+      }
+    }
+  ]
+}
 module.exports = datasources
