@@ -5,16 +5,6 @@ const datasources = {}
 
 const log = (...msg) => console.log('[datasources]', ...msg)
 
-if (config.has('api') && config.has('api.dataSources.mongodb') && config.get('api.dataSources.mongodb.url')) {
-  log('Data sources: Using MongoDB config', config.get('api.dataSources.mongodb'))
-  datasources.db = {
-    connector: 'loopback-connector-mongodb',
-    url: config.get('api.dataSources.mongodb.url'),
-    name: 'db',
-    ssl: true,
-  }
-}
-
 if (config.has('api.dataSources') && config.has('api.dataSources.mysqldb') && config.has('api.dataSources.mysqldb.url')) {
   log('Data sources: Using MySQL config', config.get('api.dataSources.mysqldb.url'))
   datasources.db = {
@@ -28,22 +18,27 @@ if (config.has('api.dataSources') && config.has('api.dataSources.mysqldb') && co
 
 if (config.has('api.dataSources') && config.has('api.dataSources.proxy_load_balancer') && config.has('api.dataSources.proxy_load_balancer.url') && config.has('api.dataSources.proxy_load_balancer.baseUrl')) {
   log('Data sources: Using Proxy config', config.get('api.dataSources.proxy_load_balancer'))
-  datasources.proxy = {
-    'name': 'proxy',
+  datasources.token_service = {
+    'name': 'token_service',
     'baseURL': '',
     'crud': false,
     'connector': 'rest',
-    'operations': [
+    "operations": [
       {
-        'template': {
-          'method': 'GET',
-          'url': config.get('api.dataSources.proxy_load_balancer.url'),
+        "template": {
+          "method": "GET",
+          "url": `${config.get('api.dataSources.token_service.url')}/api/systems/generateToken`,
+          "query": {
+            "email": "{!email}"
+          }
         },
-        'functions': {
-          'getNext': [],
-        },
-      },
-    ],
+        "functions": {
+          "generateToken": [
+            "email"
+          ]
+        }
+      }
+    ]
   }
 }
 

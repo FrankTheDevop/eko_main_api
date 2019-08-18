@@ -1,11 +1,10 @@
 {
   "internal": {
-    "name": "db",
-    "connector": "memory",
-    "file": "db.json"
+    "name": "internal",
+    "connector": "memory"
   },
-  "proxy": {
-    "name": "proxy",
+  "token_service": {
+    "name": "token_service",
     "baseURL": "",
     "crud": false,
     "connector": "rest",
@@ -13,10 +12,15 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://localhost:1236/api/proxy/next"
+          "url": "http://token_service.eko.frankthedevop.com/api/systems/generateToken",
+          "query": {
+            "email": "{!email}"
+          }
         },
         "functions": {
-          "getNext": []
+          "generateToken": [
+            "email"
+          ]
         }
       }
     ]
