@@ -40,7 +40,7 @@
   "System": {
     "dataSource": "internal"
   },
-  "user": {
+  "Client": {
     "dataSource": "db",
     "public": true
   }

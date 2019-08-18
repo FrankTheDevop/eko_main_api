@@ -1,0 +1,61 @@
+{
+  "name": "Client",
+  "base": "User",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
+    "token": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW",
+      "property": "register"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    }
+  ],
+  "methods": {
+    "register": {
+      "accepts": [
+        {
+          "arg": "email",
+          "type": "string"
+        },
+        {
+          "arg": "password",
+          "type": "string"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "registration",
+          "type": "object"
+        }
+      ],
+      "description": "register a new user",
+      "http": {
+        "verb": "post"
+      }
+    }
+  }
+}

@@ -27,7 +27,7 @@ if (config.has('api.dataSources') && config.has('api.dataSources.proxy_load_bala
       {
         "template": {
           "method": "GET",
-          "url": `${config.get('api.dataSources.token_service.url')}/api/systems/generateToken`,
+          "url": `${config.get('api.dataSources.token_service.url')}/api/Systems/generateToken`,
           "query": {
             "email": "{!email}"
           }
