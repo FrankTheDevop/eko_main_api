@@ -1,4 +1,4 @@
-FROM fdsmedia/lbdocker:v1.0.0-3
+FROM fdsmedia/lbdocker-8.16.0:v1.0.0
 
 # Add application folder
 RUN mkdir /app
