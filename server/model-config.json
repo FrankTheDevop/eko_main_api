@@ -39,5 +39,9 @@
   },
   "System": {
     "dataSource": "internal"
+  },
+  "user": {
+    "dataSource": "db",
+    "public": true
   }
 }
