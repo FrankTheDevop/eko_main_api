@@ -39,5 +39,9 @@
   },
   "System": {
     "dataSource": "internal"
+  },
+  "Client": {
+    "dataSource": "db",
+    "public": true
   }
 }

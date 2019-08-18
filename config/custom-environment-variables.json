@@ -14,6 +14,12 @@
       "mysqldb": {
         "url": "MYSQL_URL"
       },
+      "token_service": {
+        "url": "TOKEN_SERVICE_URL"
+      },
+      "qrcode_service": {
+        "url": "QRCODE_SERVICE_URL"
+      },
       "proxy_load_balancer": {
         "baseUrl": "PROXY_LOAD_BALANCER_BASEURL",
         "url": "PROXY_LOAD_BALANCER_URL"

@@ -1,0 +1,1 @@
+ create table Client (`id` varchar(191), `email` varchar(255), `token` varchar(255), realm varchar(255), password varchar(255), emailVerified tinyint(1) default 0, verificationToken varchar(255), username varchar(255), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
