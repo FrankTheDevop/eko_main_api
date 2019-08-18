@@ -1,0 +1,15 @@
+{
+  "extends": "standard",
+  "rules": {
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "operator-linebreak": [
+      "error",
+      "after"
+    ],
+    "padded-blocks": "off",
+    "no-var": "error"
+  }
+}

@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  lbseed-api:
+    container_name: lbseed-api
+    image: fdsmedia/lbseed-api
+    restart: always
+    environment:
+      - MYSQL_URL=
+      - 'VIRTUAL_HOST=http://hostname'
+      - SERVICE_PORTS=port
+      - RABBITMQ_REST_PORT=15672
+      - RABBITMQ_URI=amqp://guest:guest@docker.for.mac.localhost/
+      - RABBITMQ_TIMEOUT=30000
+      - RABBITMQ_CONCURRENCY=5
+    deploy:
+      resources:
+        limits:
+          memory: 164M
+        reservations:
+          memory: 32M

@@ -1,0 +1,39 @@
+{
+  "name": "System",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "MessageQueue": {
+      "consumers": {
+        "consumerStart": {
+          "queue": "lbseed::start",
+          "type": "fdsmedia.lbseed.job.start"
+        }
+      },
+      "producers": {
+        "producerNotification": {
+          "exchange": "notification",
+          "options": {
+            "routingKey": "notification::log",
+            "type": "peakssignals.job.log.notification"
+          }
+        },
+        "producerError": {
+          "exchange": "lbseed",
+          "options": {
+            "routingKey": "lbseed::error",
+            "type": "fdsmedia.error"
+          }
+        }
+      }
+    }
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

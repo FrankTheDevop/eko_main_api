@@ -1,0 +1,71 @@
+{
+  "loopback-component-explorer": {
+    "mountPath": "/explorer"
+  },
+  "loopback-component-mq": {
+    "path": "loopback-component-mq",
+    "options": {
+      "restPort": 15672,
+      "acls": [
+        {
+          "accessType": "*",
+          "principalType": "ROLE",
+          "principalId": "$unauthenticated",
+          "permission": "DENY"
+        }
+      ]
+    },
+    "topology": {
+      "connection": {
+        "uri": "amqp://guest:guest@localhost/%2F?socket_timeout=30&heartbeat=300",
+        "timeout": 30000
+      },
+      "exchanges": [
+        {
+          "name": "notification",
+          "type": "topic",
+          "persistent": true
+        },
+        {
+          "name": "lbseed",
+          "type": "topic",
+          "persistent": true
+        }
+      ],
+      "queues": [
+        {
+          "name": "notification::log",
+          "subscribe": false
+        },
+        {
+          "name": "lbseed::error",
+          "subscribe": false
+        }
+      ],
+      "bindings": [
+        {
+          "exchange": "notification",
+          "target": "notification::log",
+          "keys": [
+            "notification::log"
+          ]
+        },
+        {
+          "exchange": "lbseed",
+          "target": "lbseed::error",
+          "keys": [
+            "lbseed::error"
+          ]
+        }
+      ],
+      "logging": {
+        "adapters": {
+          "stdOut": {
+            "level": 5,
+            "bailIfDebug": true
+          }
+        }
+      }
+    }
+  }
+}

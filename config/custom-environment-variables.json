@@ -1,0 +1,23 @@
+{
+  "api": {
+    "components": {
+      "rabbitmq": {
+        "restPort": "RABBITMQ_REST_PORT",
+        "uri": "RABBITMQ_URI",
+        "timeout": "RABBITMQ_TIMEOUT"
+      }
+    },
+    "dataSources": {
+      "mongodb": {
+        "url": "MONGODB_URL"
+      },
+      "mysqldb": {
+        "url": "MYSQL_URL"
+      },
+      "proxy_load_balancer": {
+        "baseUrl": "PROXY_LOAD_BALANCER_BASEURL",
+        "url": "PROXY_LOAD_BALANCER_URL"
+      }
+    }
+  }
+}

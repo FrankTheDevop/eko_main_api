@@ -1,0 +1,28 @@
+{
+  "internal": {
+    "name": "db",
+    "connector": "memory",
+    "file": "db.json"
+  },
+  "proxy": {
+    "name": "proxy",
+    "baseURL": "",
+    "crud": false,
+    "connector": "rest",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:1236/api/proxy/next"
+        },
+        "functions": {
+          "getNext": []
+        }
+      }
+    ]
+  },
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  }
+}

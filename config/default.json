@@ -1,0 +1,23 @@
+{
+  "api": {
+    "components": {
+      "rabbitmq": {
+        "restPort": 15672,
+        "uri": "amqp://guest:guest@hostname/",
+        "timeout": 30000
+      }
+    },
+    "dataSources": {
+      "mongodb": {
+        "url": "mongodb://user:db@hostname:port/db?authSource=authSourceDb&ssl=true"
+      },
+      "mysqldb": {
+        "url": "mysql://user:pw@localhost:3306/db"
+      },
+      "proxy_load_balancer": {
+        "baseUrl": "localhost:1235/api",
+        "url": "http://localhost:1235/api/proxy/next"
+      }
+    }
+  }
+}

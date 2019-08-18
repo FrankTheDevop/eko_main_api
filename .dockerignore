@@ -1,0 +1,8 @@
+node_modules
+.git
+coverage
+.idea
+.nyc_output
+caller
+config/local.json
+alternative-tmp
